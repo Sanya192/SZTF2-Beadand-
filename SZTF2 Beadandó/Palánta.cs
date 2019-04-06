@@ -3,7 +3,7 @@ namespace SZTF2_Beadandó
 {
     class Palánta : VizesBlokk
     {
-        public Palánta() {
+        public Palánta(int vizhozam):base(vizhozam) {
             OnLeNullazodott += Palánta_OnLeNullazodott;
         }
 

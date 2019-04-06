@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace SZTF2_Beadandó
 {
+    
     class Program
     {
         static void Main(string[] args) {
         }
 
     }
-    
+    class LocsoloFa
+    {
+        VizesBlokk gyökér;
 
+    }
 }

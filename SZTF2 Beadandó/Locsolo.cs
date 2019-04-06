@@ -15,6 +15,17 @@ namespace SZTF2_Beadandó
     {
         private VizesBlokk[] kivezetes;
         private int[] kivezetesmenny;
+        private int leszarmazhatosag;
+
+        public Locsolo(VizesBlokk[] kivezetes, int[] kivezetesmenny, int leszarmazhatosag,int vizhozam):base(vizhozam) {
+            this.kivezetes = kivezetes;
+            this.kivezetesmenny = kivezetesmenny;
+            this.leszarmazhatosag = leszarmazhatosag;
+            for (int i = 0; i < kivezetes.Length; i++) {
+
+            }
+        }
+
         public override int Vizhozam {
             get => base.Vizhozam;
             set {

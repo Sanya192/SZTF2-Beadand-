@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSettings.cs" />
     <Compile Include="Locsolo.cs" />
     <Compile Include="Palánta.cs" />
     <Compile Include="Program.cs" />
