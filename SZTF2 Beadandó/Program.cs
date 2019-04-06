@@ -10,6 +10,9 @@ namespace SZTF2_Beadandó
     class Program
     {
         static void Main(string[] args) {
+            GlobalSettings.Init();
+            var temp = new LocsoloFa(new Locsolo(10000,3));
+                Console.ReadLine();
         }
 
     }
@@ -17,5 +20,8 @@ namespace SZTF2_Beadandó
     {
         VizesBlokk gyökér;
 
+        public LocsoloFa(VizesBlokk gyökér) {
+            this.gyökér = gyökér;
+        }
     }
 }

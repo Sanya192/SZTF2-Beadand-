@@ -17,21 +17,48 @@ namespace SZTF2_Beadandó
         private int[] kivezetesmenny;
         private int leszarmazhatosag;
 
+
+
+
+        /// <summary>
+        /// Nem használt csak későbbi implementásért van.
+        /// </summary>
+        /// <param name="kivezetes"></param>
+        /// <param name="kivezetesmenny"></param>
+        /// <param name="leszarmazhatosag"></param>
+        /// <param name="vizhozam"></param>
         public Locsolo(VizesBlokk[] kivezetes, int[] kivezetesmenny, int leszarmazhatosag,int vizhozam):base(vizhozam) {
             this.kivezetes = kivezetes;
             this.kivezetesmenny = kivezetesmenny;
             this.leszarmazhatosag = leszarmazhatosag;
-            for (int i = 0; i < kivezetes.Length; i++) {
+        }
+        public Locsolo(double vizhozam,int leszarmazhatosag) : base(vizhozam) {
+            if (leszarmazhatosag>0) {
+                kivezetes = new VizesBlokk[GlobalSettings.Gyari_csapkivezetesek];
+                kivezetesmenny = new int[kivezetes.Length];
+                for (int i = 0; i < kivezetes.Length; i++) {
+                    kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());
+                    kivezetes[i] = new Locsolo(vizhozam * (kivezetesmenny[i] / 100f),leszarmazhatosag-1);
+                }
+            }
+            else {
+                kivezetes = new VizesBlokk[GlobalSettings.Gyari_csapkivezetesek];
+                kivezetesmenny = new int[kivezetes.Length];
 
+                for (int i = 0; i < kivezetes.Length; i++) {
+                    kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());
+                    kivezetes[i] = new Palánta(vizhozam*(kivezetesmenny[i]/100f));
+                }
             }
         }
 
-        public override int Vizhozam {
+
+        public override double Vizhozam {
             get => base.Vizhozam;
             set {
                 base.Vizhozam = value;
                 for (int i = 0; i < kivezetes.Length; i++) {
-                    kivezetes[i].Vizhozam = base.Vizhozam / kivezetesmenny[i];
+                    kivezetes[i].Vizhozam = base.Vizhozam * (kivezetesmenny[i]/100);
                 }
             }
         }
