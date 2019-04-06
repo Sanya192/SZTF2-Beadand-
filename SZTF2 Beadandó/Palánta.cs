@@ -1,8 +1,29 @@
-﻿namespace SZTF2_Beadandó
+﻿using System;
+namespace SZTF2_Beadandó
 {
-    class Palánta :VizesBlokk
+    class Palánta : VizesBlokk
     {
-        public override int Vizhozam { get => base.Vizhozam; set => base.Vizhozam = value; }
-    }
+        public Palánta() {
+            OnLeNullazodott += Palánta_OnLeNullazodott;
+        }
 
+        private void Palánta_OnLeNullazodott(object sender, EventArgs e) {
+            Console.WriteLine("Egy palánta lennullázódott");
+        }
+
+        public event EventHandler OnLeNullazodott;
+        public override int Vizhozam {
+            get => base.Vizhozam;
+            set {
+                base.Vizhozam = value;
+                if (value == 0) {
+                    OnLeNullazodott(this, EventArgs.Empty);
+                }
+            }
+        }
+    }
+    class LennulazodottArgs : EventArgs
+    {
+        //Not implemented
+    }
 }
