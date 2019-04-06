@@ -16,6 +16,8 @@ namespace SZTF2_Beadandó
         private VizesBlokk[] kivezetes;
         private int[] kivezetesmenny;
         private int leszarmazhatosag;
+        public int Leszarmazhatosag { get => leszarmazhatosag; set => leszarmazhatosag = value; }
+        public VizesBlokk[] Kivezetes { get => kivezetes; set => kivezetes = value; }
 
 
 
@@ -62,6 +64,8 @@ namespace SZTF2_Beadandó
                 }
             }
         }
+
+
         public void Csapállítás(int index, int érték) {
             
             int eredeti = kivezetesmenny[index];

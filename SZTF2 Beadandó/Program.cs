@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,41 @@ namespace SZTF2_Beadandó
         static void Main(string[] args) {
             GlobalSettings.Init();
             var temp = new LocsoloFa(new Locsolo(10000,3));
-                Console.ReadLine();
+            var temp2 = temp.Select(p => p).ToArray();
+            foreach (var item in temp) {
+                Console.WriteLine(item);
+            }
+            
+            Console.ReadLine();
+
         }
 
     }
-    class LocsoloFa
+    class LocsoloFa :IEnumerable<VizesBlokk>
     {
-        VizesBlokk gyökér;
+        public Locsolo gyökér;
 
-        public LocsoloFa(VizesBlokk gyökér) {
+        public LocsoloFa(Locsolo gyökér) {
             this.gyökér = gyökér;
+        }
+
+        public IEnumerator<VizesBlokk> GetEnumerator() {
+            return Bejaro(gyökér);
+            
+        }
+        public IEnumerator<VizesBlokk> Bejaro(VizesBlokk bejaro) {
+             {
+                if (bejaro.GetType()!=typeof(Palánta)) {
+                    Locsolo bejaro_locsol = bejaro as Locsolo;
+                    for (int i = 0; i < bejaro_locsol.Kivezetes.Length; i++) {
+                       yield return Bejaro(bejaro_locsol.Kivezetes[i])as VizesBlokk;
+                    }
+                }
+               yield return bejaro;
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator() {
+            return GetEnumerator();
         }
     }
 }
