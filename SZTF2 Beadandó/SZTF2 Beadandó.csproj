@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Locsolo.cs" />
+    <Compile Include="Palánta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VizesBlokk.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
