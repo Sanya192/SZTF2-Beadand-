@@ -37,13 +37,7 @@ namespace SZTF2_Beadandó
         }
         public IEnumerator<VizesBlokk> Bejaro(VizesBlokk bejaro) {
              {
-                if (bejaro.GetType()!=typeof(Palánta)) {
-                    Locsolo bejaro_locsol = bejaro as Locsolo;
-                    for (int i = 0; i < bejaro_locsol.Kivezetes.Length; i++) {
-                       yield return Bejaro(bejaro_locsol.Kivezetes[i])as VizesBlokk;
-                    }
-                }
-               yield return bejaro;
+                
             }
         }
         IEnumerator IEnumerable.GetEnumerator() {
