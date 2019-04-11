@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections;
 
 namespace SZTF2_Beadandó
 {
@@ -18,7 +19,7 @@ namespace SZTF2_Beadandó
         private int leszarmazhatosag;
         public int Leszarmazhatosag { get => leszarmazhatosag; set => leszarmazhatosag = value; }
         public VizesBlokk[] Kivezetes { get => kivezetes; set => kivezetes = value; }
-
+        private VizesBlokk bejaro;
 
 
 
@@ -29,27 +30,33 @@ namespace SZTF2_Beadandó
         /// <param name="kivezetesmenny"></param>
         /// <param name="leszarmazhatosag"></param>
         /// <param name="vizhozam"></param>
-        public Locsolo(VizesBlokk[] kivezetes, int[] kivezetesmenny, int leszarmazhatosag,int vizhozam):base(vizhozam) {
+        public Locsolo(VizesBlokk[] kivezetes, int[] kivezetesmenny, int leszarmazhatosag, int vizhozam) : base(vizhozam)
+        {
             this.kivezetes = kivezetes;
             this.kivezetesmenny = kivezetesmenny;
             this.leszarmazhatosag = leszarmazhatosag;
         }
-        public Locsolo(double vizhozam,int leszarmazhatosag) : base(vizhozam) {
-            if (leszarmazhatosag>0) {
+        public Locsolo(double vizhozam, int leszarmazhatosag) : base(vizhozam)
+        {
+            if (leszarmazhatosag > 0)
+            {
                 kivezetes = new VizesBlokk[GlobalSettings.Gyari_csapkivezetesek];
                 kivezetesmenny = new int[kivezetes.Length];
-                for (int i = 0; i < kivezetes.Length; i++) {
+                for (int i = 0; i < kivezetes.Length; i++)
+                {
                     kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());
-                    kivezetes[i] = new Locsolo(vizhozam * (kivezetesmenny[i] / 100f),leszarmazhatosag-1);
+                    kivezetes[i] = new Locsolo(vizhozam * (kivezetesmenny[i] / 100f), leszarmazhatosag - 1);
                 }
             }
-            else {
+            else
+            {
                 kivezetes = new VizesBlokk[GlobalSettings.Gyari_csapkivezetesek];
                 kivezetesmenny = new int[kivezetes.Length];
 
-                for (int i = 0; i < kivezetes.Length; i++) {
+                for (int i = 0; i < kivezetes.Length; i++)
+                {
                     kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());
-                    kivezetes[i] = new Palánta(vizhozam*(kivezetesmenny[i]/100f));
+                    kivezetes[i] = new Palánta(vizhozam * (kivezetesmenny[i] / 100f));
                 }
             }
         }
@@ -59,23 +66,25 @@ namespace SZTF2_Beadandó
             get => base.Vizhozam;
             set {
                 base.Vizhozam = value;
-                for (int i = 0; i < kivezetes.Length; i++) {
-                    kivezetes[i].Vizhozam = base.Vizhozam * (kivezetesmenny[i]/100);
+                for (int i = 0; i < kivezetes.Length; i++)
+                {
+                    kivezetes[i].Vizhozam = base.Vizhozam * (kivezetesmenny[i] / 100);
                 }
             }
         }
 
 
-        public void Csapállítás(int index, int érték) {
-            
+        public void Csapállítás(int index, int érték)
+        {
+
             int eredeti = kivezetesmenny[index];
             kivezetesmenny[index] = érték;
-            if (kivezetesmenny.Sum() > 0) {
+            if (kivezetesmenny.Sum() > 0)
+            {
                 kivezetesmenny[index] = eredeti;
                 throw new Többmintszaz();
             }
-            
+
         }
     }
-
 }

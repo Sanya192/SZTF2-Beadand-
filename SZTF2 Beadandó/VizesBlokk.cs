@@ -1,6 +1,7 @@
-﻿namespace SZTF2_Beadandó
+﻿using System.Collections;
+namespace SZTF2_Beadandó
 {
-    abstract class VizesBlokk
+    abstract class VizesBlokk 
     {
         private double vizhozam;
         private int index;
@@ -11,5 +12,5 @@
             index = GlobalSettings.UtolsoIndex++;
         }
     }
-
+    
 }
