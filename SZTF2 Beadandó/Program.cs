@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SZTF2_Beadandó
@@ -15,7 +16,12 @@ namespace SZTF2_Beadandó
             foreach (var item in temp) {
                 Console.WriteLine(item);
             }
-            
+            var temp3 = new List<VizesBlokk>[GlobalSettings.Összint];
+            for (int i = 0; i < temp3.Length; i++)
+            {
+                temp3[i] = temp.Szintenkent(i);
+                
+            }
             Console.ReadLine();
 
         }

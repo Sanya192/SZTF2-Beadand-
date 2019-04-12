@@ -42,6 +42,7 @@ namespace SZTF2_Beadandó
             {
                 kivezetes = new VizesBlokk[GlobalSettings.Gyari_csapkivezetesek];
                 kivezetesmenny = new int[kivezetes.Length];
+                this.leszarmazhatosag = leszarmazhatosag;
                 for (int i = 0; i < kivezetes.Length; i++)
                 {
                     kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());
@@ -52,7 +53,7 @@ namespace SZTF2_Beadandó
             {
                 kivezetes = new VizesBlokk[GlobalSettings.Gyari_csapkivezetesek];
                 kivezetesmenny = new int[kivezetes.Length];
-
+                this.leszarmazhatosag = leszarmazhatosag;
                 for (int i = 0; i < kivezetes.Length; i++)
                 {
                     kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());

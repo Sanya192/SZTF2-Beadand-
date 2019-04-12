@@ -19,7 +19,23 @@ namespace SZTF2_Beadandó
                 yield return item;
             }
         }
+        public List<VizesBlokk> Szintenkent(int x)
+        {
+            var szint = new List<VizesBlokk>();
+            foreach (VizesBlokk item in this)
+            {
+                if (x==GlobalSettings.Szintek+1&&item.GetType()==typeof(Palánta))
+                {
+                    szint.Add(item);
+                }
+                else if(!(item.GetType() == typeof(Palánta))&&x == GlobalSettings.Szintek-(item as Locsolo).Leszarmazhatosag)
+                {
+                    szint.Add(item);
 
+                }
+            }
+            return szint;
+        }
         IEnumerator<VizesBlokk> IEnumerable<VizesBlokk>.GetEnumerator()
         {
             // return GetEnumerator();

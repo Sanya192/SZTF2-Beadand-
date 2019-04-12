@@ -21,7 +21,11 @@ namespace SZTF2_Beadandó
         static bool utlosoTulajdonos;
         static int utolsoIndex;
 
+        /// <summary>
+        /// Ez a Locsoló szinteződése, az összint az +2
+        /// </summary>
         public static int Szintek { get => szintek; set => szintek = value; }
+        public static int Összint { get => szintek + 2; }
         public static int Gyari_csapkivezetesek { get => gyari_csapkivezetesek; set => gyari_csapkivezetesek = value; }
         public static int Korok { get => korok; set => korok = value; }
         public static int Gyozelmek { get => gyozelmek; set => gyozelmek = value; }
