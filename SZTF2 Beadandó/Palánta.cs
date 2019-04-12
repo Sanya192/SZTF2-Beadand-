@@ -29,7 +29,10 @@ namespace SZTF2_Beadandó
         private void Palánta_OnLeNullazodott(object sender, EventArgs e) {
             Console.WriteLine("Egy palánta lennullázódott");
         }
-
+        public override string ToString()
+        {
+            return base.ToString()+$" Tulajdonos: {(tulajdonos?"számitógép":"Jatékos")}";
+        }
 
     }
     class LennulazodottArgs : EventArgs

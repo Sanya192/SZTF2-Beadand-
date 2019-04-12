@@ -31,7 +31,6 @@ namespace SZTF2_Beadandó
                 else if(!(item.GetType() == typeof(Palánta))&&x == GlobalSettings.Szintek-(item as Locsolo).Leszarmazhatosag)
                 {
                     szint.Add(item);
-
                 }
             }
             return szint;
@@ -68,7 +67,6 @@ namespace SZTF2_Beadandó
                 }
             }
         }
-        
     }
   
 }

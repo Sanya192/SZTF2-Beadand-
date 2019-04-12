@@ -87,5 +87,9 @@ namespace SZTF2_Beadandó
             }
 
         }
+        public override string ToString()
+        {
+            return base.ToString()+$" Szint:{GlobalSettings.Összint-Leszarmazhatosag}";
+        }
     }
 }

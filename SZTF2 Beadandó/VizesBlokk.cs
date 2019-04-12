@@ -11,6 +11,10 @@ namespace SZTF2_Beadandó
             this.vizhozam = vizhozam;
             index = GlobalSettings.UtolsoIndex++;
         }
+        public override string ToString()
+        {
+            return $"N:{index} {GetType().ToString().Substring(GetType().ToString().IndexOf('.')+1)} vizhozam{vizhozam}";
+        }
     }
     
 }
