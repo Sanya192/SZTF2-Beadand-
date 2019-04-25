@@ -1,14 +1,24 @@
-﻿.tree {
+﻿main {
     width: 1900px;
     border: 15px solid green;
     padding: 50px;
     margin: 20px;
+    font-size:32px;
+    text-align:center;
+}
+header {
+    width: 1900px;
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
+    text-align: left;
+    font-size: 32px;
 }
 a {
-    width: 50px;
+    width: 100px;
     border: 5px solid green;
     padding: 5px;
-    height:50px;
+    height:100px;
     /*display: -webkit-flex; /* Safari 
     -webkit-align-items: center; /* Safari 7.0+ */
     display:inline-flex;

@@ -67,7 +67,7 @@ namespace SZTF2_Beadandó
             string result = "";
             for (int i = 0; i < array.Length; i++)
             {
-                result += array[i] + rowSeparator;
+                result += array[i] +"%"+ rowSeparator;
             }
             return result;
         }
