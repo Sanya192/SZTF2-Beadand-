@@ -20,7 +20,7 @@ namespace SZTF2_Beadandó
             }
         }
 
-        public Palánta(double vizhozam):base(vizhozam) {
+        public Palánta(double vizhozam,int parentid):base(vizhozam,parentid) {
             OnLeNullazodott += Palánta_OnLeNullazodott;
             tulajdonos = !GlobalSettings.UtlosoTulajdonos;
             GlobalSettings.UtlosoTulajdonos ^= true;

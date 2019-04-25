@@ -1,0 +1,78 @@
+﻿using System.Collections.Generic;
+using System;
+using System.IO;
+
+namespace SZTF2_Beadandó
+{
+    class Graphic {
+        List<VizesBlokk>[] kirajzolando;
+        string input;
+        string output;
+        public Graphic(List<VizesBlokk>[] rajzold,string file,string output){
+            kirajzolando = rajzold;
+            input = file;
+            this.output = output;
+        }
+       public  void xDraw()
+        {
+            var htmlin = File.ReadAllText(input);
+            string masterpiece = "<div class=\"tree\">\n";
+            for (int i = 0; i < kirajzolando.Length; i++)
+            {
+                //masterpiece += "<ul>";
+                masterpiece += "<div class=\"item\">";
+                foreach (var item in kirajzolando[i])
+                {
+                    masterpiece += $"<a href=\"#\" id={item.index}>{item.index}&#09;</a>\n";
+                }
+                masterpiece += "</div>";
+                masterpiece += "<br>";
+            }
+            masterpiece += "</div>";
+            string script = "<script>";
+            for (int i = 1; i < kirajzolando.Length; i++)
+            {
+                foreach (var item in kirajzolando[i])
+                {
+                    script += $"var myLine = new LeaderLine( " +
+                        $"document.getElementById('{item.parentid}')," +
+                        $"document.getElementById('{item.index}')" +
+                        $"	); ";
+                }
+            }
+            script += "</script>";
+            htmlin = InsertSanyi(htmlin, "<?sanyi graf>", masterpiece);
+            htmlin = InsertSanyi(htmlin, "<?sanyi script>", script);
+            File.WriteAllText(output,htmlin);
+        }
+        string InsertSanyi( string bemenet,string searched,string insert)
+        {
+            var place = bemenet.IndexOf(searched);
+            bemenet = bemenet.Remove(place, searched.Length);
+            bemenet = bemenet.Insert(place, insert);
+
+            return bemenet;
+        }
+        string Clear()
+        {
+
+            throw new NotFiniteNumberException();
+        }
+        public void Draw()
+        {
+            foreach (var collection in kirajzolando)
+            {
+                string s = "";
+                foreach (var item in collection)
+                {
+                    s += $"{item.index}\t";
+                }
+                Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+                Console.WriteLine(s);
+                
+            }
+        }
+    }
+  
+}
+

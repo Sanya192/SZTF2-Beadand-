@@ -30,13 +30,13 @@ namespace SZTF2_Beadandó
         /// <param name="kivezetesmenny"></param>
         /// <param name="leszarmazhatosag"></param>
         /// <param name="vizhozam"></param>
-        public Locsolo(VizesBlokk[] kivezetes, int[] kivezetesmenny, int leszarmazhatosag, int vizhozam) : base(vizhozam)
+        public Locsolo(VizesBlokk[] kivezetes, int[] kivezetesmenny, int leszarmazhatosag, int vizhozam,int parentid) : base(vizhozam,parentid)
         {
             this.kivezetes = kivezetes;
             this.kivezetesmenny = kivezetesmenny;
             this.leszarmazhatosag = leszarmazhatosag;
         }
-        public Locsolo(double vizhozam, int leszarmazhatosag) : base(vizhozam)
+        public Locsolo(double vizhozam, int leszarmazhatosag, int parentid) : base(vizhozam,parentid)
         {
             if (leszarmazhatosag > 0)
             {
@@ -46,7 +46,7 @@ namespace SZTF2_Beadandó
                 for (int i = 0; i < kivezetes.Length; i++)
                 {
                     kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());
-                    kivezetes[i] = new Locsolo(vizhozam * (kivezetesmenny[i] / 100f), leszarmazhatosag - 1);
+                    kivezetes[i] = new Locsolo(vizhozam * (kivezetesmenny[i] / 100f), leszarmazhatosag - 1,this.index);
                 }
             }
             else
@@ -57,7 +57,7 @@ namespace SZTF2_Beadandó
                 for (int i = 0; i < kivezetes.Length; i++)
                 {
                     kivezetesmenny[i] = GlobalSettings.R.Next(0, 101 - kivezetesmenny.Sum());
-                    kivezetes[i] = new Palánta(vizhozam * (kivezetesmenny[i] / 100f));
+                    kivezetes[i] = new Palánta(vizhozam * (kivezetesmenny[i] / 100f),this.index);
                 }
             }
         }

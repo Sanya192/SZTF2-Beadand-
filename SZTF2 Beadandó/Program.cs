@@ -11,7 +11,7 @@ namespace SZTF2_Beadandó
     {
         static void Main(string[] args) {
             GlobalSettings.Init();
-            var temp = new LocsoloFa(new Locsolo(10000,3));
+            var temp = new LocsoloFa(new Locsolo(10000,GlobalSettings.Összint-2,0));
             var temp2 = temp.Select(p => p).ToArray();
             foreach (var item in temp) {
                 Console.WriteLine(item);
@@ -21,32 +21,13 @@ namespace SZTF2_Beadandó
             {
                 temp3[i] = temp.Szintenkent(i);
             }
-            Console.ReadLine();
+            var rajzol = new Graphic(temp3, "bemenet.html", "index.html");
+            rajzol.Draw();
+            rajzol.xDraw();
+            //Console.ReadLine();
 
         }
 
-    }
-    class Graphic {
-        List<VizesBlokk>[] kirajzolando;
-        string input;
-        string output;
-        public Graphic(List<VizesBlokk>[] rajzold,string file,string output){
-            kirajzolando = rajzold;
-            input = file;
-            this.output = output;
-        }
-        void Draw()
-        {
-            var htmlin = File.ReadAllText(input);
-            string masterpiece = "";
-            for (int i = 0; i < kirajzolando.Length; i++)
-            {
-                foreach (var item in kirajzolando[i])
-                {
-                    masterpiece+=
-                }
-            }
-        }
     }
   
 }

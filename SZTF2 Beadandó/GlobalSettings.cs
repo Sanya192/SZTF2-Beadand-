@@ -47,7 +47,7 @@ namespace SZTF2_Beadandó
             r = new Random();
         }
         public static void Init() {
-            szintek = 3;
+            szintek = 2;
             gyari_csapkivezetesek = 2;
             nehezseg = Nehezseg.Hard;
             korok = 1;

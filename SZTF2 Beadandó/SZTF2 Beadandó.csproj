@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSettings.cs" />
+    <Compile Include="Graphic.cs" />
     <Compile Include="Locsolo.cs" />
     <Compile Include="LocsoloFa.cs" />
     <Compile Include="Palánta.cs" />
@@ -56,6 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bemenet.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="leader-line.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="stlye.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
