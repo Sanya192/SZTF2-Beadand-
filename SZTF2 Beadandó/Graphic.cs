@@ -17,17 +17,24 @@ namespace SZTF2_Beadandó
         {
             var htmlin = File.ReadAllText(input);
             string masterpiece = "<div class=\"tree\">\n";
-            for (int i = 0; i < kirajzolando.Length; i++)
+            for (int i = 0; i < kirajzolando.Length-1; i++)
             {
                 //masterpiece += "<ul>";
                 masterpiece += "<div class=\"item\">";
                 foreach (var item in kirajzolando[i])
                 {
-                    masterpiece += $"<a href=\"#\" id={item.index}>{item.index}&#09;</a>\n";
+                    masterpiece += $"<a href=\"#\" id={item.index} data-parentid={item.parentid}>{item.index}&#09;</a>\n";
                 }
                 masterpiece += "</div>";
                 masterpiece += "<br>";
             }
+            masterpiece += "<div class=\"item\">";
+            foreach (var item in kirajzolando[kirajzolando.Length-1])
+            {
+                masterpiece += $"<a href=\"#\" id={item.index} data-owner={(item as Palánta).Tulajdonos} data-parentid={item.parentid}>{item.index}&#09;</a>\n";
+            }
+            masterpiece += "</div>";
+            masterpiece += "<br>";
             masterpiece += "</div>";
             string script = "<script>";
             for (int i = 1; i < kirajzolando.Length; i++)
@@ -37,7 +44,7 @@ namespace SZTF2_Beadandó
                     script += $"var myLine = new LeaderLine( " +
                         $"document.getElementById('{item.parentid}')," +
                         $"document.getElementById('{item.index}')" +
-                        $"	); ";
+                        $"	); \n";
                 }
             }
             script += "</script>";
@@ -52,11 +59,6 @@ namespace SZTF2_Beadandó
             bemenet = bemenet.Insert(place, insert);
 
             return bemenet;
-        }
-        string Clear()
-        {
-
-            throw new NotFiniteNumberException();
         }
         public void Draw()
         {

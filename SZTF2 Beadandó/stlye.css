@@ -23,3 +23,9 @@ a+a{
 .item{
     text-align:center;
 }
+[data-owner="True"] {
+    border: 5px solid blue !important;
+}
+[data-owner="False"] {
+    border: 5px solid red !important;
+}
