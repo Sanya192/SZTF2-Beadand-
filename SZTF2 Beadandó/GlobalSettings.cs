@@ -59,5 +59,18 @@ namespace SZTF2_Beadandó
 
              
     }
+    public static class ArrayExtensions
+    {
+        public static string ToString(
+            this int[] array, string rowSeparator)
+        {
+            string result = "";
+            for (int i = 0; i < array.Length; i++)
+            {
+                result += array[i] + rowSeparator;
+            }
+            return result;
+        }
     }
+}
 

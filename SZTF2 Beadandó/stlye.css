@@ -24,8 +24,8 @@ a+a{
     text-align:center;
 }
 [data-owner="True"] {
-    border: 5px solid blue !important;
+    border: 5px solid blue 
 }
 [data-owner="False"] {
-    border: 5px solid red !important;
+    border: 5px solid red 
 }

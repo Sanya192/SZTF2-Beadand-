@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Collections;
 
 namespace SZTF2_Beadandó
 {
@@ -19,7 +18,8 @@ namespace SZTF2_Beadandó
         private int leszarmazhatosag;
         public int Leszarmazhatosag { get => leszarmazhatosag; set => leszarmazhatosag = value; }
         public VizesBlokk[] Kivezetes { get => kivezetes; set => kivezetes = value; }
-        private VizesBlokk bejaro;
+        public int[] Kivezetesmenny { get => kivezetesmenny; set => kivezetesmenny = value; }
+
 
 
 
@@ -89,7 +89,8 @@ namespace SZTF2_Beadandó
         }
         public override string ToString()
         {
-            return base.ToString()+$" Szint:{GlobalSettings.Összint-Leszarmazhatosag}";
+           return base.ToString()+$" Szint:{GlobalSettings.Összint-Leszarmazhatosag}";
+           
         }
     }
 }

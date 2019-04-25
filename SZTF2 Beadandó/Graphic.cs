@@ -23,7 +23,7 @@ namespace SZTF2_Beadandó
                 masterpiece += "<div class=\"item\">";
                 foreach (var item in kirajzolando[i])
                 {
-                    masterpiece += $"<a href=\"#\" id={item.index} data-parentid={item.parentid}>{item.index}&#09;</a>\n";
+                    masterpiece += $"<a href=\"#\" value=\"{(item as Locsolo).Kivezetesmenny.ToString(" | ")}\" id={item.index} data-parentid={item.parentid}>{item.index}&#09;</a>\n";
                 }
                 masterpiece += "</div>";
                 masterpiece += "<br>";
