@@ -11,7 +11,7 @@ namespace SZTF2_Beadandó
     {
         static void Main(string[] args) {
             GlobalSettings.Init();
-            var temp = new LocsoloFa(new Locsolo(10000,GlobalSettings.Összint-1,0));
+            var temp = new LocsoloFa(new Locsolo(10000,GlobalSettings.Összint-2,0));
             var temp2 = temp.Select(p => p).ToArray();
             foreach (var item in temp) {
                 Console.WriteLine(item);
@@ -31,6 +31,11 @@ namespace SZTF2_Beadandó
         }
 
     }
+    class InputHandler
+    {
+
+    }
+
   
 }
 
