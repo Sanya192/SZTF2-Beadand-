@@ -1,5 +1,4 @@
 ﻿<!doctype html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -8,21 +7,31 @@
     <meta name="author" content="MSanyi">
     <link rel="stylesheet" href="stlye.css">
     <script src="leader-line.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
-    <header>
-        <form>
+    <header class="row">
+        <form class="column">
+            <label id="blokk">X.locsolo</label><br />
             Melyik csapot:
             <input type="text" name="csap"><br>
             Mennyire
             <input type="text" name="mennyi"><br>
             <input type="submit" />
         </form>
+        <div class="column">
+            <label>Gép vizhozama: </label><label id="COM"></label><br />
+            <label>Játékos vizh: </label><label id="P1"></label><br />
+            <label>Vezet: </label><label id="win"></label><br />
+            <label>Ponttal: </label><label id="diff"></label><br />
+
+        </div>
     </header>
     <main>
         <!-- <script src="js/scripts.js"></script>-->
         <?sanyi graf>
     </main>
-</body>
     <?sanyi script>
+    <script>state()</script>
+</body>
 </html>

@@ -24,6 +24,8 @@ namespace SZTF2_Beadandó
             var rajzol = new Graphic(temp3, "bemenet.html", "index.html");
             rajzol.Draw();
             rajzol.xDraw();
+            System.Diagnostics.Process.Start("index.html");
+
             //Console.ReadLine();
 
         }

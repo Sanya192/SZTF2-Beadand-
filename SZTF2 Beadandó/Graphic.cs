@@ -23,7 +23,10 @@ namespace SZTF2_Beadandó
                 masterpiece += "<div class=\"item\">";
                 foreach (var item in kirajzolando[i])
                 {
-                    masterpiece += $"<a href=\"#\"  id={item.index} data-parentid={item.parentid}>{(item as Locsolo).Kivezetesmenny.ToString(" | ")} V:{item.Vizhozam}</a>\n";
+                    masterpiece += $"<a href=\"#\" onclick=select({item.index})  id={item.index} name=\"Locsolo\"" +
+                        $" data-vizhozam={item.Vizhozam}" +
+                        $" data-parentid={item.parentid}>" +
+                        $"{(item as Locsolo).Kivezetesmenny.ToString(" | ")} V:{item.Vizhozam}</a>\n";
                 }
                 masterpiece += "</div>";
                 masterpiece += "<br>";
@@ -31,7 +34,11 @@ namespace SZTF2_Beadandó
             masterpiece += "<div class=\"item\">";
             foreach (var item in kirajzolando[kirajzolando.Length-1])
             {
-                masterpiece += $"<a href=\"#\" id={item.index} data-owner={(item as Palánta).Tulajdonos} data-parentid={item.parentid}>{item.Vizhozam}&#09;</a>\n";
+                masterpiece += $"<a href=\"#\" id={item.index} name=\"Palanta\"" +
+                    $" data-vizhozam={item.Vizhozam}" +
+                    $" data-owner={(item as Palánta).Tulajdonos}" +
+                    $" data-parentid={item.parentid}>" +
+                    $"V:{item.Vizhozam}&#09;</a>\n";
             }
             masterpiece += "</div>";
             masterpiece += "<br>";
