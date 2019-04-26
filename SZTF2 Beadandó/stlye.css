@@ -1,5 +1,5 @@
 ﻿main {
-    width: 1900px;
+    min-width: 1900px;
     border: 15px solid green;
     padding: 50px;
     margin: 20px;
