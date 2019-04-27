@@ -1,9 +1,11 @@
 ﻿var chosen = "x";
 function select(id) {
     var blokk = document.getElementById("blokk");
-        blokk.innerHTML = id + ".Locsolo";
-        chosen = id;
-        state();
+    blokk.innerHTML = id + ".Locsolo";
+    document.getElementById("szam").value = id;
+    chosen = id;
+    document.createElement()
+    state();
 }
 function state() {
     var com = document.getElementById("COM");
@@ -33,5 +35,5 @@ function state() {
     else {
         win.innerHTML = "Döntetlen";
     }
-    diff.innerHTML=Math.abs(comScore-playerScore)
+    diff.innerHTML = Math.abs(comScore - playerScore)
 }
