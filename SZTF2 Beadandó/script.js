@@ -4,7 +4,16 @@ function select(id) {
     blokk.innerHTML = id + ".Locsolo";
     document.getElementById("szam").value = id;
     chosen = id;
-    document.createElement()
+    var adat=document.getElementById(id);
+	var field=document.getElementById('csap');
+	field.innerHTML="";
+    for(var i=0;i<adat.dataset.kivmenny;i++){
+    var radioInput=document.createElement("input");
+	radioInput.setAttribute('type', 'radio');
+	radioInput.setAttribute('name', 'csap');
+	radioInput.setAttribute('value',i)
+    field.appendChild(radioInput);
+}
     state();
 }
 function state() {
