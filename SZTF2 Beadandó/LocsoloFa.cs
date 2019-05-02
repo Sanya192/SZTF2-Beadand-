@@ -1,14 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SZTF2_Beadandó
 {
     class LocsoloFa :IEnumerable<VizesBlokk>
     {
-        public Locsolo gyökér;
+        private Locsolo gyökér;
+        private VizesBlokk[] vektor;
+        private List<VizesBlokk>[] fogasLista;
+
+        internal VizesBlokk[] Vektor { get => vektor; set => vektor = value; }
+        internal List<VizesBlokk>[] FogasLista { get => fogasLista; set => fogasLista = value; }
 
         public LocsoloFa(Locsolo gyökér) {
             this.gyökér = gyökér;
+            vektor=this.Select(p => p).ToArray();
+            fogasLista = new List<VizesBlokk>[GlobalSettings.Összint];
+            for (int i = 0; i < fogasLista.Length; i++)
+            {
+                fogasLista[i] = Szintenkent(i);
+            }
+
         }
         //Azt tudom ez a foreach a masik meg a linq-s része a dolognak.
         //de hogy mi miért működik azt nem biztos

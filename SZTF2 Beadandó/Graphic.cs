@@ -24,9 +24,9 @@ namespace SZTF2_Beadandó
                 foreach (var item in kirajzolando[i])
                 {
                     masterpiece += $"<a href=\"#\" onclick=select({item.index})  id={item.index} name=\"Locsolo\"" +
-                        $" data-vizhozam='{item.Vizhozam}'" +
-                        $" data-parentid='{item.parentid}'" +
-                        $"data-kivmenny='{(item as Locsolo).Kivezetesmenny.Length}'>" +
+                        $" data-vizhozam={item.Vizhozam}" +
+                        $" data-parentid={item.parentid}" +
+                        $" data-kivmenny={(item as Locsolo).Kivezetesmenny.Length}>" +
                         $"{(item as Locsolo).Kivezetesmenny.ToString(" | ")} V:{item.Vizhozam}</a>\n";
                 }
                 masterpiece += "</div>";

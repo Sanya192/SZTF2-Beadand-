@@ -25,9 +25,9 @@ namespace SZTF2_Beadandó
           //  rajzol.Draw();
             rajzol.xDraw();
             System.Diagnostics.Process.Start("index.html");
-            var clientinput = new InputHandler();
+            var clientinput = new InputHandler(temp2,rajzol);
             clientinput.StartListening();
-            //Console.ReadLine();
+            Console.ReadLine();
 
         }
 
