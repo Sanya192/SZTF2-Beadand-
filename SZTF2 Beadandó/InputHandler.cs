@@ -8,6 +8,11 @@ namespace SZTF2_Beadandó
     {
         public override string Message => "A bemenet hibás 0-100-ig kell megadni";
     }
+    class WrongURL : Exception
+    {
+        public override string Message => "Valami olyan bemenet jött amire nem számítottam";
+
+    }
     class InputHandler
     {
         HttpListenerContext context;
@@ -55,6 +60,11 @@ namespace SZTF2_Beadandó
                     var request = context.Request;
                     string text;
                     Console.WriteLine(context.Request.RawUrl);
+
+                    if (context.Request.RawUrl!="/")
+                    {
+                        throw new WrongURL();
+                    }
                     using (var reader = new StreamReader(request.InputStream, request.ContentEncoding))
                     {
                         text = reader.ReadToEnd();
@@ -76,6 +86,17 @@ namespace SZTF2_Beadandó
                         Response(context.Request.RawUrl);
                     }
 
+                }
+                catch (WrongURL e)
+                {
+                    Console.WriteLine(e.Message);
+                    Response("/");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        context = client.GetContext();
+                        Console.WriteLine(context.Request.RawUrl);
+                        Response(context.Request.RawUrl);
+                    }
                 }
                 catch (RosszInput e)
                 {
@@ -126,7 +147,7 @@ namespace SZTF2_Beadandó
                         = int.Parse(command.Parameters["mennyi"]);
                     (fareferencia.Vektor[int.Parse(command.Parameters["index"])] as Locsolo).Vizfrissites();
                     fareferencia.CalculateScore(Turn.player);
-                    var ai = new AI(fareferencia.FogasLista);
+                    //var ai = new AI(fareferencia.FogasLista);
                     break;
                 case commandTypes.exit:
                     listen = false;

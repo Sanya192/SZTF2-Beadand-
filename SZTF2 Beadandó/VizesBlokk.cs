@@ -3,7 +3,7 @@ using System.Collections;
 namespace SZTF2_Beadandó
 {
     //[System.Runtime.InteropServices.ComVisible(true)]
-    abstract class VizesBlokk :ICloneable
+    abstract class VizesBlokk //:ICloneable
     {
         private double vizhozam;
         public int index;
@@ -20,10 +20,10 @@ namespace SZTF2_Beadandó
             return $"N:{index} {GetType().ToString().Substring(GetType().ToString().IndexOf('.')+1)} vizhozam{vizhozam} parentid: {parentid}";
         }
 
-        public object Clone()
+        /*public object Clone()
         {
             return MemberwiseClone();
-        }
+        }*/
     }
     
 }
