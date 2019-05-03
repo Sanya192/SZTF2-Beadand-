@@ -17,6 +17,7 @@ namespace SZTF2_Beadandó
                 if (value == 0) {
                     OnLeNullazodott(this, EventArgs.Empty);
                 }
+                
             }
         }
 

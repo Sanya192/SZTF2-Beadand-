@@ -34,10 +34,10 @@ a+a{
     text-align:center;
 }
 [data-owner="True"] {
-    border: 5px solid blue 
+    border: 5px solid red 
 }
 [data-owner="False"] {
-    border: 5px solid red 
+    border: 5px solid blue 
 }
 .column {
     float: left;

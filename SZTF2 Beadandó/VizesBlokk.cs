@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 namespace SZTF2_Beadandó
 {
-    abstract class VizesBlokk 
+    //[System.Runtime.InteropServices.ComVisible(true)]
+    abstract class VizesBlokk :ICloneable
     {
         private double vizhozam;
         public int index;
@@ -16,6 +18,11 @@ namespace SZTF2_Beadandó
         public override string ToString()
         {
             return $"N:{index} {GetType().ToString().Substring(GetType().ToString().IndexOf('.')+1)} vizhozam{vizhozam} parentid: {parentid}";
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
     

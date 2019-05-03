@@ -14,9 +14,9 @@ function select(id) {
 	radioInput.setAttribute('value',i)
     field.appendChild(radioInput);
 }
-    state();
+    //state();
 }
-function state() {
+/*function state() {
     var com = document.getElementById("COM");
     var player = document.getElementById("P1");
     var win = document.getElementById("win");
@@ -25,7 +25,7 @@ function state() {
     var playerScore = 0;
     var palantak = document.getElementsByName("Palanta");
     for (var i = 0; i < palantak.length; i++) {
-        if (palantak[i].dataset.owner === "True") {
+        if (palantak[i].dataset.owner === "False") {
             playerScore += parseInt(palantak[i].dataset.vizhozam);
         }
         else {
@@ -45,4 +45,4 @@ function state() {
         win.innerHTML = "Döntetlen";
     }
     diff.innerHTML = Math.abs(comScore - playerScore)
-}
+}*/

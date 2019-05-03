@@ -19,7 +19,7 @@ namespace SZTF2_Beadandó
         public int Leszarmazhatosag { get => leszarmazhatosag; set => leszarmazhatosag = value; }
         public VizesBlokk[] Kivezetes { get => kivezetes; set => kivezetes = value; }
         public int[] Kivezetesmenny { get => kivezetesmenny; set => kivezetesmenny = value; }
-
+        
 
 
 
@@ -91,6 +91,17 @@ namespace SZTF2_Beadandó
         {
            return base.ToString()+$" Szint:{GlobalSettings.Összint-Leszarmazhatosag}";
            
+        }
+        public void Vizfrissites()
+        {
+            for (int i = 0; i < kivezetes.Length; i++)
+            {
+                kivezetes[i].Vizhozam = (kivezetesmenny[i] / 100f) * Vizhozam;
+                if (kivezetes[i].GetType()==typeof(Locsolo))
+                {
+                    (kivezetes[i] as Locsolo).Vizfrissites();
+                }
+            }
         }
     }
 }

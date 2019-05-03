@@ -9,9 +9,16 @@ namespace SZTF2_Beadandó
         private Locsolo gyökér;
         private VizesBlokk[] vektor;
         private List<VizesBlokk>[] fogasLista;
-
-        internal VizesBlokk[] Vektor { get => vektor; set => vektor = value; }
-        internal List<VizesBlokk>[] FogasLista { get => fogasLista; set => fogasLista = value; }
+        private int playerViz;
+        private int comViz;
+        int playerScore;
+        int comScore;
+        public VizesBlokk[] Vektor { get => vektor; set => vektor = value; }
+        public List<VizesBlokk>[] FogasLista { get => fogasLista; set => fogasLista = value; }
+        public int PlayerViz{ get => playerViz; set => playerViz = value; }
+        public int ComViz { get => comViz; set => comViz = value; }
+        public int PlayerScore { get => playerScore; set => playerScore = value; }
+        public int ComScore { get => comScore; set => comScore = value; }
 
         public LocsoloFa(Locsolo gyökér) {
             this.gyökér = gyökér;
@@ -21,10 +28,9 @@ namespace SZTF2_Beadandó
             {
                 fogasLista[i] = Szintenkent(i);
             }
-
+            playerScore = 0;
+            comScore = 0;
         }
-        //Azt tudom ez a foreach a masik meg a linq-s része a dolognak.
-        //de hogy mi miért működik azt nem biztos
         public IEnumerator GetEnumerator()
         {
             foreach (var item in enumarate(gyökér))
@@ -60,8 +66,6 @@ namespace SZTF2_Beadandó
         }
         IEnumerable<VizesBlokk> enumarate( VizesBlokk jelenlegi)
         {
-            
-
             if (jelenlegi==null||jelenlegi.GetType()==typeof(Palánta))
             {
                 yield break;
@@ -80,7 +84,41 @@ namespace SZTF2_Beadandó
                 }
             }
         }
+       public void CalculateScore(Turn turn)
+        {
+            int beforePlayerViz = playerViz;
+            int beforeComViz = comViz;
+            playerViz = 0;
+            comViz = 0;
+            for (int i = 0; i < fogasLista[fogasLista.Length-1].Count; i++)
+            {
+                Palánta növény = fogasLista[fogasLista.Length - 1][i] as Palánta;
+                if (!növény.Tulajdonos)
+                {
+                    playerViz += (int)növény.Vizhozam;
+                }
+                else
+                {
+                    comViz += (int)növény.Vizhozam;
+
+                }
+            }
+            switch (turn)
+            {
+                case Turn.player:
+                    playerScore +=(playerViz- beforePlayerViz)+(beforeComViz-ComViz);
+                    break;
+                case Turn.comp:
+                    comScore += ( beforePlayerViz-playerViz) + (comViz - beforeComViz);
+                    break;
+                case Turn.nobody:
+                    break;
+                default:
+                    break;
+            }
+
+        }
     }
-  
+
 }
 

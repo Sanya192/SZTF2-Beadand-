@@ -5,23 +5,26 @@ using System.IO;
 namespace SZTF2_Beadandó
 {
     class Graphic {
-        List<VizesBlokk>[] kirajzolando;
+        LocsoloFa kirajzolando;
         string input;
         string output;
-        public Graphic(List<VizesBlokk>[] rajzold,string file,string output){
+        public Graphic(LocsoloFa rajzold,string file,string output){
             kirajzolando = rajzold;
             input = file;
             this.output = output;
+            
         }
        public  void xDraw()
         {
+            kirajzolando.CalculateScore(Turn.nobody);
+            
             var htmlin = File.ReadAllText(input);
             string masterpiece = "<div class=\"tree\">\n";
-            for (int i = 0; i < kirajzolando.Length-1; i++)
+            for (int i = 0; i < kirajzolando.FogasLista.Length-1; i++)
             {
                 //masterpiece += "<ul>";
                 masterpiece += "<div class=\"item\">";
-                foreach (var item in kirajzolando[i])
+                foreach (var item in kirajzolando.FogasLista[i])
                 {
                     masterpiece += $"<a href=\"#\" onclick=select({item.index})  id={item.index} name=\"Locsolo\"" +
                         $" data-vizhozam={item.Vizhozam}" +
@@ -33,7 +36,7 @@ namespace SZTF2_Beadandó
                 masterpiece += "<br>";
             }
             masterpiece += "<div class=\"item\">";
-            foreach (var item in kirajzolando[kirajzolando.Length-1])
+            foreach (var item in kirajzolando.FogasLista[kirajzolando.FogasLista.Length-1])
             {
                 masterpiece += $"<a href=\"#\" id={item.index} name=\"Palanta\"" +
                     $" data-vizhozam={item.Vizhozam}" +
@@ -45,9 +48,9 @@ namespace SZTF2_Beadandó
             masterpiece += "<br>";
             masterpiece += "</div>";
             string script = "<script>";
-            for (int i = 1; i < kirajzolando.Length; i++)
+            for (int i = 1; i < kirajzolando.FogasLista.Length; i++)
             {
-                foreach (var item in kirajzolando[i])
+                foreach (var item in kirajzolando.FogasLista[i])
                 {
                     script += $"var myLine = new LeaderLine( " +
                         $"document.getElementById('{item.parentid}')," +
@@ -55,6 +58,11 @@ namespace SZTF2_Beadandó
                         $"	); \n";
                 }
             }
+            script += $"document.getElementById('COM').innerHTML={kirajzolando.ComScore}\n" +
+                $"document.getElementById('P1').innerHTML={kirajzolando.PlayerScore}\n" +
+                $"document.getElementById('win').innerHTML='{(kirajzolando.ComScore > kirajzolando.PlayerScore ? "Számítógép" : kirajzolando.ComScore < kirajzolando.PlayerScore ? "Játékos" : "döntetlen")}'\n" +
+                $"document.getElementById('diff').innerHTML={Math.Abs(kirajzolando.ComScore-kirajzolando.PlayerScore)}\n";
+
             script += "</script>";
             htmlin = InsertSanyi(htmlin, "<?sanyi graf>", masterpiece);
             htmlin = InsertSanyi(htmlin, "<?sanyi script>", script);
@@ -70,7 +78,7 @@ namespace SZTF2_Beadandó
         }
         public void Draw()
         {
-            foreach (var collection in kirajzolando)
+            foreach (var collection in kirajzolando.FogasLista)
             {
                 string s = "";
                 foreach (var item in collection)
