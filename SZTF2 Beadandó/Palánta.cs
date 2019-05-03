@@ -8,7 +8,9 @@ namespace SZTF2_Beadandó
         /// </summary>
         bool tulajdonos;
         public event EventHandler OnLeNullazodott;
-
+        /// <summary>
+        /// True if player
+        /// </summary>
         public bool Tulajdonos { get => tulajdonos; set => tulajdonos = value; }
         public override double Vizhozam {
             get => base.Vizhozam;

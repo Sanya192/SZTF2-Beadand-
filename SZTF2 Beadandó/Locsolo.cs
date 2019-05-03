@@ -67,9 +67,11 @@ namespace SZTF2_Beadandó
             get => base.Vizhozam;
             set {
                 base.Vizhozam = value;
+                var berfore = value;
                 for (int i = 0; i < kivezetes.Length; i++)
                 {
-                    kivezetes[i].Vizhozam = base.Vizhozam * (kivezetesmenny[i] / 100);
+                    kivezetes[i].Vizhozam = berfore * (kivezetesmenny[i] / 100);
+                    berfore -= kivezetes[i].Vizhozam;
                 }
             }
         }
@@ -92,6 +94,8 @@ namespace SZTF2_Beadandó
            return base.ToString()+$" Szint:{GlobalSettings.Összint-Leszarmazhatosag}";
            
         }
+        /*nem muszály mindig elvileg. dinamikus a property :D
+         */
         public void Vizfrissites()
         {
             for (int i = 0; i < kivezetes.Length; i++)
@@ -102,6 +106,10 @@ namespace SZTF2_Beadandó
                     (kivezetes[i] as Locsolo).Vizfrissites();
                 }
             }
+        }
+        public void Vizfrissites(Locsolo modositott)
+        {
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SZTF2_Beadandó
     {
         static void Main(string[] args) {
             GlobalSettings.Init();
-            var temp = new LocsoloFa(new Locsolo(10000,GlobalSettings.Összint-2,0));
+            var temp = new LocsoloFa(new Locsolo(10000,GlobalSettings.Szintek,0));
             var rajzol = new Graphic(temp, "bemenet.html", "index.html");
           //  rajzol.Draw();
             rajzol.xDraw();
@@ -27,6 +27,7 @@ namespace SZTF2_Beadandó
     {
         set,
         exit,
+        gameon
     }
 
 

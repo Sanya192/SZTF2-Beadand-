@@ -13,6 +13,7 @@ namespace SZTF2_Beadandó
         public override string Message => "Valami olyan bemenet jött amire nem számítottam";
 
     }
+
     class InputHandler
     {
         HttpListenerContext context;
@@ -20,6 +21,7 @@ namespace SZTF2_Beadandó
         bool listen;
         LocsoloFa fareferencia;
         Graphic rajzol;
+        AI ai;
         public InputHandler()
         {
             context = null;
@@ -34,19 +36,29 @@ namespace SZTF2_Beadandó
             listen = true;
             fareferencia = faref;
             this.rajzol = rajzol;
+            ai = new AI(faref.Vektor);
         }
 
         public void Response(string file)
         {
-            file = file.Remove(0, 1);
-            if (file=="")
+            try
             {
-                file = "index.html";
+                file = file.Remove(0, 1);
+                if (file == "")
+                {
+                    file = "index.html";
+                }
+                var pagebuff = File.ReadAllBytes(file);
+                context.Response.ContentLength64 = pagebuff.Length;
+                context.Response.OutputStream.Write(pagebuff, 0, pagebuff.Length);
+                context.Response.Close();
             }
-            var pagebuff = File.ReadAllBytes(file);
-            context.Response.ContentLength64 = pagebuff.Length;
-            context.Response.OutputStream.Write(pagebuff, 0, pagebuff.Length);
-            context.Response.Close();
+            catch (Exception e)
+            {
+                //néha a böngésző meghülyül??? 21:03 és most kezdte el?? 
+                Console.WriteLine(e.Message);
+            }
+           
         }
         public void StartListening()
         {
@@ -148,6 +160,29 @@ namespace SZTF2_Beadandó
                     (fareferencia.Vektor[int.Parse(command.Parameters["index"])] as Locsolo).Vizfrissites();
                     fareferencia.CalculateScore(Turn.player);
                     //var ai = new AI(fareferencia.FogasLista);
+                    ai.Szamolj(fareferencia.Vektor);
+                    (fareferencia.Vektor[0] as Locsolo).Vizfrissites();
+                    Console.WriteLine(ai.legutobbiindex);
+                    fareferencia.CalculateScore(Turn.comp);
+                    if (fareferencia.PlayerScore>1000||fareferencia.ComScore>1000)
+                    {
+                        Console.WriteLine($" NYERT:{(fareferencia.PlayerScore>fareferencia.ComScore?"Játékos":"Gép")}");
+                        if (GlobalSettings.R.Next(0,100)>50)
+                        {
+                            fareferencia = new LocsoloFa(new Locsolo(10000, ++GlobalSettings.Szintek, 0));
+                             rajzol = new Graphic(fareferencia, "bemenet.html", "index.html");
+                            ai = new AI(fareferencia.Vektor);
+                        }
+                        else
+                        {
+                            GlobalSettings.Gyari_csapkivezetesek++;
+                            fareferencia = new LocsoloFa(new Locsolo(10000, GlobalSettings.Szintek, 0));
+                             rajzol = new Graphic(fareferencia, "bemenet.html", "index.html");
+                            ai = new AI(fareferencia.Vektor);
+
+                        }
+
+                    }       
                     break;
                 case commandTypes.exit:
                     listen = false;
