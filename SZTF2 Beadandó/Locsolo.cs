@@ -107,9 +107,5 @@ namespace SZTF2_Beadandó
                 }
             }
         }
-        public void Vizfrissites(Locsolo modositott)
-        {
-
-        }
     }
 }

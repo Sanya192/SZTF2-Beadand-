@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SZTF2_Beadandó.AI" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAgAAgAAAQAAAAAAEAAAAAAA=</HashCode>
+      <FileName>AI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.Command" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAYAAAACAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.GlobalSettings" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEEIQAABAEABAAAAABAIEAAQABAAAggDAAIIAQA=</HashCode>
+      <FileName>GlobalSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.ArrayExtensions" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GlobalSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.Graphic" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAkAAAAAQAAAACAAAARAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graphic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.RosszInput" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>InputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.WrongURL" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>InputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.InputHandler" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQABBAAAACAAAAAAAAAAAAACAEAAABAAAAIA=</HashCode>
+      <FileName>InputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.Többmintszaz" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Locsolo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.HelytelenAdat" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Locsolo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.Locsolo">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAFAAAAA0AAAAIEAAAABAAAAAEAAAA=</HashCode>
+      <FileName>Locsolo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.LocsoloFa" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAAJAAAAAIBCQAAAAEAAAAFAAQAACAEAAIAAgAKA=</HashCode>
+      <FileName>LocsoloFa.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SZTF2_Beadandó.Palánta">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAgAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAEAAQA=</HashCode>
+      <FileName>Palánta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.LennulazodottArgs" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Palánta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.Program" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SZTF2_Beadandó.VizesBlokk">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQEAAAEBAAA=</HashCode>
+      <FileName>VizesBlokk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="SZTF2_Beadandó.Nehezseg" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAA=</HashCode>
+      <FileName>GlobalSettings.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SZTF2_Beadandó.commandTypes" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAQAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SZTF2_Beadandó.Turn" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAQABAAAAAAAAAAA=</HashCode>
+      <FileName>Turn.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
