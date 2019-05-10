@@ -9,82 +9,72 @@ namespace SZTF2_Beadandó
 {
     class AI
     {
-        private VizesBlokk[] be;
-       public int[] maxindexek { get; set; }
-        public int legutobbiindex { get; private set; }
-        //internal VizesBlokk[] Be { get => be; set => be = value; }
+        LocsoloFa referencia;
+        Kimenet leguttobi;
 
-        public AI(VizesBlokk[] be)
+        internal Kimenet Leguttobi { get => leguttobi; set => leguttobi = value; }
+
+        public AI(LocsoloFa referencia)
         {
-            //emost kajak generáljak le ennyit? na jó
-            this.be = be;
+            this.referencia = referencia;
+
         }
-        public void Szamolj(VizesBlokk[] be)
+        public Kimenet Szamolj()
         {
-            var duplatomb = new double[be.Length * 2];
-            maxindexek = new int[duplatomb.Length];
+            List<Kimenet> esetek = new List<Kimenet>();
+            for (int i = 0; i < referencia.Vektor.Length; i++)
+            {
+                if (referencia.Vektor[i].GetType()==typeof(Locsolo))
+                {
+                    for (int j = 0; j < (referencia.Vektor[i]as Locsolo).Kivezetes.Length; j++)
+                    {
+                        var masolt = referencia.Clone();
 
-            for (int i = 0; i < duplatomb.Length / 2; i++)
-            {
-                if (be[i].GetType()==typeof(Locsolo))
-                {
-                    duplatomb[i] =
-                MindentModositokÖsszegzek(be[i], 0, be[i].Vizhozam,i);
+                        (masolt.Vektor[i] as Locsolo).Kivezetesmenny[j] = 0;
+                        (masolt.Vektor[0] as Locsolo).Vizfrissites();
+                        esetek.Add(new Kimenet(i, masolt.CalculateScoreOut(Turn.comp), j, 0));
+                    }
+                    for (int j = 0; j < (referencia.Vektor[i] as Locsolo).Kivezetes.Length; j++)
+                    {
+                        var masolt = referencia.Clone();
+
+                        (masolt.Vektor[i] as Locsolo).Kivezetesmenny[j] = 100;
+                        (masolt.Vektor[0] as Locsolo).Vizfrissites();
+                        esetek.Add(new Kimenet(i, masolt.CalculateScoreOut(Turn.comp), j, 100));
+                    }
                 }
+                
             }
-            for (int i = duplatomb.Length / 2; i < duplatomb.Length; i++)
-            {
-                if (be[i/2].GetType() == typeof(Locsolo))
-                {
-                    duplatomb[i] =
-                MindentModositokÖsszegzek(be[i/2], 100, be[i/2].Vizhozam,i);
-                }
-            }
-            
-            int legnagyobbindex = Array.IndexOf(duplatomb, duplatomb.Max());
-            legutobbiindex = legnagyobbindex < be.Length ? legnagyobbindex : legnagyobbindex / 2;
-           ( be[legnagyobbindex < be.Length ? legnagyobbindex : legnagyobbindex / 2] as Locsolo).Kivezetesmenny[ maxindexek[legnagyobbindex]]=legnagyobbindex<be.Length?0:100;
-            
+            return esetek.OrderByDescending(p=>p.Ertek).First();
         }
-
-        public double MindentModositokÖsszegzek(VizesBlokk be, int csapertek,double vizhozambe,int index)
+        public void Csinald()
         {
-            if (be.GetType()==typeof(Palánta))
-            {
-                if (!(be as Palánta).Tulajdonos)
-                {
-                    return vizhozambe;
-
-                }
-                else return 0;
-            }
-            Locsolo referencia = be as Locsolo;
-            var kimenet = new List<double>();
-            var vizhozam = be.Vizhozam;
-            for (int i = 0; i < referencia.Kivezetes.Length; i++)
-            {
-                kimenet.Add(MindentModositokÖsszegzek(referencia.Kivezetes[i],csapertek, csapertek*vizhozam*.100f, index));
-                //ez ha nem módusulna
-                if (referencia.Kivezetesmenny[i] * .100f * vizhozam>0)
-                {
-                    vizhozam = 0;
-                }
-                else
-                vizhozam -= referencia.Kivezetesmenny[i]*.100f*vizhozam;
-            }
-            maxindexek[index] = kimenet.IndexOf(kimenet.Max());
-            return kimenet.Max();
+            var be = Szamolj();
+            leguttobi = be;
+            (referencia.Vektor[be.Index] as Locsolo).Kivezetesmenny[be.Alindex] = be.Teljesitmeny;
         }
-        class Kimenet
+        public class Kimenet
         {
-            double value;
             int index;
+            double ertek;
+            int alindex;
+            int teljesitmeny;
 
-            public Kimenet(double value, int index)
+
+
+            public int Index { get => index; set => index = value; }
+            public double Ertek { get => ertek; set => ertek = value; }
+            public int Alindex { get => alindex; set => alindex = value; }
+            public int Teljesitmeny { get => teljesitmeny; set => teljesitmeny = value; }
+            public Kimenet(int index, double ertek, int alindex, int teljesitmeny)
             {
-                this.value = value;
                 this.index = index;
+                this.ertek = ertek;
+                this.alindex = alindex;
+                this.teljesitmeny = teljesitmeny;
             }
         }
     }
+
+
 }

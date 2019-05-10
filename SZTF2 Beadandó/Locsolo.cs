@@ -19,7 +19,17 @@ namespace SZTF2_Beadandó
         public int Leszarmazhatosag { get => leszarmazhatosag; set => leszarmazhatosag = value; }
         public VizesBlokk[] Kivezetes { get => kivezetes; set => kivezetes = value; }
         public int[] Kivezetesmenny { get => kivezetesmenny; set => kivezetesmenny = value; }
-        
+        public override VizesBlokk Clone()
+        {
+            Locsolo temp = base.Clone() as Locsolo;
+            temp.kivezetes = temp.kivezetes.Select(p => p).ToArray();
+            temp.kivezetesmenny = temp.kivezetesmenny.Select(p => p).ToArray();
+            for (int i = 0; i < temp.kivezetes.Length; i++)
+            {
+                temp.kivezetes[i] = temp.kivezetes[i].Clone();
+            }
+            return temp;
+        }
 
 
 
@@ -94,8 +104,6 @@ namespace SZTF2_Beadandó
            return base.ToString()+$" Szint:{GlobalSettings.Összint-Leszarmazhatosag}";
            
         }
-        /*nem muszály mindig elvileg. dinamikus a property :D
-         */
         public void Vizfrissites()
         {
             for (int i = 0; i < kivezetes.Length; i++)

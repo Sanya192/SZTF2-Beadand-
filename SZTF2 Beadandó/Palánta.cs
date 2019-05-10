@@ -16,13 +16,18 @@ namespace SZTF2_Beadandó
             get => base.Vizhozam;
             set {
                 base.Vizhozam = value;
-                if (value == 0) {
+                if (value == 0&&OnLeNullazodott!=null) {
                     OnLeNullazodott(this, EventArgs.Empty);
                 }
                 
             }
         }
-
+        public override VizesBlokk Clone()
+        {
+            Palánta temp= base.Clone() as Palánta;
+            temp.OnLeNullazodott = null;
+            return temp;
+        }
         public Palánta(double vizhozam,int parentid):base(vizhozam,parentid) {
             OnLeNullazodott += Palánta_OnLeNullazodott;
             tulajdonos = !GlobalSettings.UtlosoTulajdonos;

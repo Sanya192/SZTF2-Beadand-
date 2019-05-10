@@ -36,7 +36,7 @@ namespace SZTF2_Beadandó
             listen = true;
             fareferencia = faref;
             this.rajzol = rajzol;
-            ai = new AI(faref.Vektor);
+            ai = new AI(faref);
         }
 
         public void Response(string file)
@@ -160,25 +160,26 @@ namespace SZTF2_Beadandó
                     (fareferencia.Vektor[int.Parse(command.Parameters["index"])] as Locsolo).Vizfrissites();
                     fareferencia.CalculateScore(Turn.player);
                     //var ai = new AI(fareferencia.FogasLista);
-                    ai.Szamolj(fareferencia.Vektor);
+                    ai.Csinald();
                     (fareferencia.Vektor[0] as Locsolo).Vizfrissites();
-                    Console.WriteLine(ai.legutobbiindex);
+                    Console.WriteLine(ai.Leguttobi.Index);
                     fareferencia.CalculateScore(Turn.comp);
                     if (fareferencia.PlayerScore>1000||fareferencia.ComScore>1000)
                     {
                         Console.WriteLine($" NYERT:{(fareferencia.PlayerScore>fareferencia.ComScore?"Játékos":"Gép")}");
+                        GlobalSettings.UtolsoIndex = 0;
                         if (GlobalSettings.R.Next(0,100)>50)
                         {
                             fareferencia = new LocsoloFa(new Locsolo(10000, ++GlobalSettings.Szintek, 0));
                              rajzol = new Graphic(fareferencia, "bemenet.html", "index.html");
-                            ai = new AI(fareferencia.Vektor);
+                            ai = new AI(fareferencia);
                         }
                         else
                         {
                             GlobalSettings.Gyari_csapkivezetesek++;
                             fareferencia = new LocsoloFa(new Locsolo(10000, GlobalSettings.Szintek, 0));
                              rajzol = new Graphic(fareferencia, "bemenet.html", "index.html");
-                            ai = new AI(fareferencia.Vektor);
+                            ai = new AI(fareferencia);
 
                         }
 

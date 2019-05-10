@@ -19,7 +19,12 @@ namespace SZTF2_Beadandó
         {
             return $"N:{index} {GetType().ToString().Substring(GetType().ToString().IndexOf('.')+1)} vizhozam{vizhozam} parentid: {parentid}";
         }
-
+        public virtual VizesBlokk Clone()
+        {
+            
+                return MemberwiseClone() as VizesBlokk;
+            
+        }
         /*public object Clone()
         {
             return MemberwiseClone();

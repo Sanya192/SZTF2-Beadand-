@@ -31,6 +31,10 @@ namespace SZTF2_Beadandó
             playerScore = 0;
             comScore = 0;
         }
+        public LocsoloFa Clone()
+        {
+            return new LocsoloFa(gyökér.Clone() as Locsolo);
+        }
         public IEnumerator GetEnumerator()
         {
             foreach (var item in enumarate(gyökér))
@@ -114,6 +118,39 @@ namespace SZTF2_Beadandó
                 case Turn.nobody:
                     break;
                 default:
+                    break;
+            }
+
+        }
+        public int CalculateScoreOut(Turn turn)
+        {
+            int beforePlayerViz = playerViz;
+            int beforeComViz = comViz;
+            playerViz = 0;
+            comViz = 0;
+            for (int i = 0; i < fogasLista[fogasLista.Length - 1].Count; i++)
+            {
+                Palánta növény = fogasLista[fogasLista.Length - 1][i] as Palánta;
+                if (!növény.Tulajdonos)
+                {
+                    playerViz += (int)növény.Vizhozam;
+                }
+                else
+                {
+                    comViz += (int)növény.Vizhozam;
+
+                }
+            }
+            switch (turn)
+            {
+                case Turn.player:
+                    return(playerViz - beforePlayerViz) + (beforeComViz - ComViz);
+                    break;
+                case Turn.comp:
+                    return (beforePlayerViz - playerViz) + (comViz - beforeComViz);
+                case Turn.nobody:
+                default:
+                    return 0;
                     break;
             }
 
